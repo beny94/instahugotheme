@@ -1,0 +1,122 @@
+{{ define "main" }}
+  
+    <main class="profile">
+        <section class="profile-info">
+            <figure class="profile-photo">
+                <img src="{{ .Site.BaseURL }}{{ .Site.Params.profile_photo_src }}" alt="User profile" width="150px">
+            </figure>
+                <div class="profile-data-header">
+                    <h1 class="profile-name">{{ .Site.Title }}</h1>
+                    <button class="profile-edit-button">Follow</button>
+                    <!-- <i class="fas fa-cog"></i> -->
+                </div>
+                    <div class="profile-follow-dataContainer">
+                        <div class="profile-follow-data">
+                            <p class="publications">
+                              <strong>3</strong> publicaciones
+                            </p>
+                            <p class="followers">
+                                <strong>148</strong> seguidores
+                            </p>
+                            <p class="following">
+                                <strong>306</strong> seguidos
+                            </p>
+                        </div>
+                    </div>
+                    <div class="profile-description">
+                        <strong>{{ .Site.Params.nameuser }}</strong>
+                        {{ .Site.Params.bio | safeHTML }}
+                        {{ .Site.Params.links | markdownify | safeHTML }}
+                    </div>  
+        </section>
+
+        <section class="profile-navigation-container">
+            <div class="profile-navigation-menu">
+                <div class="publications-menu">
+                    <i class="fas fa-border-all"></i>
+                    <h6>POST</h6>
+                </div>
+                <div class="igtv">
+                    <i class="fas fa-desktop"></i>
+                    <h6>PAGES</h6>
+                </div>
+                <div class="saved">
+                    <i class="far fa-bookmark"></i>
+                    <h6>SAVED</h6>
+                </div>
+                <div class="labelled">
+                    <i class="far fa-user-circle"></i>
+                    <h6>PROFILE</h6>
+                </div>
+            </div>
+        </section>
+
+        <section class="profile-publications">  
+            {{ range site.RegularPages }}    
+                <figure class="profile-img">
+                    <!-- <a href="{{ .RelPermalink }}"> -->
+                        <img src="{{ .Site.BaseURL }}{{ .Params.featured_image }}" alt="Featured Image" class="photo-img" data-popup="{{ .RelPermalink }}">
+                        <div class="titleku mask">{{ .Title }}</div>
+                    <!-- </a> -->
+                </figure>
+            {{ end }}
+        </section>
+        <!-- Added by beny -->
+        <script type="text/template" id="new-content-template">
+            <figure class="profile-img">
+                <img src="http://localhost:1313/images/featured/photo_new.png" alt="New Image" class="photo-img" data-popup="/posts/new-post/">
+                <div class="titleku mask">New Post</div>
+            </figure>
+            <!-- More figures as needed -->
+        </script>
+        <!-- Celecai -->
+    </main>
+
+    <div class="popup">
+        <div class="popup-content">
+            <iframe id="popup-iframe" src="" frameborder="0"></iframe>
+            <span class="close">&times;</span> <!-- Make sure this element is present -->
+        </div>
+    </div>    
+
+    <!-- Popup JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.photo-img').forEach(item => {
+                item.addEventListener('click', event => {
+                    const photoUrl = event.target.getAttribute('data-popup');
+                    if (window.innerWidth <= 768) {
+                        window.location.href = photoUrl; // Load photo1.html directly
+                    } else {
+                        document.getElementById('popup-iframe').src = photoUrl; // Load photo1.html in iframe
+                        document.querySelector('.popup').classList.add('show');
+                    }
+                });
+            });
+
+            document.querySelector('.close').addEventListener('click', () => {
+                closePopup();
+            });
+
+            document.addEventListener('keyup', event => {
+                if (event.key === 'Escape') {
+                    closePopup();
+                }
+            });
+
+            function closePopup() {
+                document.querySelector('.popup').classList.remove('show');
+            }
+    // Listen for messages from the iframe
+    window.addEventListener('message', function(event) {
+    //console.log('Message received from iframe:', event.data);
+    if (event.data === 'iframeClick') {
+        // If the message indicates that a click occurred inside the iframe, close the popup
+        closePopup();
+    }
+});
+            
+        });
+        
+    </script>
+{{ end }}

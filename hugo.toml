@@ -1,0 +1,14 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Journey Of You'
+theme = 'benyinsta'
+
+[params]
+    nameuser = 'Blog of Beny Aditia'
+    profile_photo_src = "images/insta/profile_photo.jpg"
+    bio = """
+        <p>Content Writer 💻</p>
+        <p>Iya aku kangen denganmu 💌</p>
+        <p><strong>Disclamer:</strong> Tulisan disini tidak sepenuhnya nyata atau mengambil dari kehidupan sesorang, blog ini hanya berisi tulisan random dari penulis</p>
+    """
+    links = "[twitter.com/fi0renza_alex](https://twitter.com/fi0renza_alex)"

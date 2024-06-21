@@ -1,0 +1,25 @@
+    <header class="header">
+        <nav class="nav-menu">
+            <div class="logo">
+                    <i class="fab fa-instagram instagram"></i>   
+                    <figure class="logo-image">
+                         <img src="{{ "/images/insta/instagram_branding.png" | absURL }}" alt="Instagram Branding" width="103px" > 
+                    </figure>   
+            </div>
+            <div class="search-container">
+                <div class="search-button">
+                    <i class="fas fa-search"></i>
+                   <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="main-menu">
+                <div class="icons">
+                    <i class="far fa-compass compass"></i>
+                    <i class="far fa-heart like"></i>
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </nav>   
+    </header>
+
+{{ partial "menu.html" (dict "menuID" "main" "page" .) }}

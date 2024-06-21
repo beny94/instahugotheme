@@ -1,0 +1,78 @@
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><style>
+    .photo-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .photo-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .photo-description {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .photo-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+     
+    @media screen and (max-width: 600px) {
+        .photo-container {
+            padding: 10px;
+        }
+        .photo-title {
+            font-size: 20px;
+        }
+        .photo-description {
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="photo-container">
+  <h2 class="photo-title">Post 1</h2>
+  
+    <img class="photo-img" src="/images/featured/photo_1.png" alt="/images/featured/photo_1.png">
+  
+  <p class="photo-description"><p>Ini adalah postingan 1</p>
+<p>Tempor proident minim aliquip reprehenderit dolor et ad anim Lorem duis sint eiusmod. Labore ut ea duis dolor. Incididunt consectetur proident qui occaecat incididunt do nisi Lorem. Tempor do laborum elit laboris excepteur eiusmod do. Eiusmod nisi excepteur ut amet pariatur adipisicing Lorem.</p>
+<p>Occaecat nulla excepteur dolore excepteur duis eiusmod ullamco officia anim in voluptate ea occaecat officia. Cillum sint esse velit ea officia minim fugiat. Elit ea esse id aliquip pariatur cupidatat id duis minim incididunt ea ea. Anim ut duis sunt nisi. Culpa cillum sit voluptate voluptate eiusmod dolor. Enim nisi Lorem ipsum irure est excepteur voluptate eu in enim nisi. Nostrud ipsum Lorem anim sint labore consequat do.</p>
+</p>
+</div>
+
+<script>
+  
+  document.addEventListener('click', function(event) {
+      
+      const isOutsideContainer = !event.target.closest('.photo-container');
+      if (isOutsideContainer) {
+          
+          window.parent.postMessage('iframeClick', '*');
+      }
+  });
+  
+      
+  document.addEventListener('keyup', function(event) {
+      if (event.key === 'Escape') {
+          window.parent.postMessage('iframeClick', '*');
+      }
+  });
+</script>
+</body>
+
+

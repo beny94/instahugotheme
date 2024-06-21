@@ -1,0 +1,77 @@
+
+<script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><style>
+    .photo-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .photo-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .photo-description {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .photo-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+     
+    @media screen and (max-width: 600px) {
+        .photo-container {
+            padding: 10px;
+        }
+        .photo-title {
+            font-size: 20px;
+        }
+        .photo-description {
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="photo-container">
+  <h2 class="photo-title">Post 2</h2>
+  
+    <img class="photo-img" src="/images/featured/photo_2.png" alt="/images/featured/photo_2.png">
+  
+  <p class="photo-description"><p>Anim eiusmod irure incididunt sint cupidatat. Incididunt irure irure irure nisi ipsum do ut quis fugiat consectetur proident cupidatat incididunt cillum. Dolore voluptate occaecat qui mollit laborum ullamco et. Ipsum laboris officia anim laboris culpa eiusmod ex magna ex cupidatat anim ipsum aute. Mollit aliquip occaecat qui sunt velit ut cupidatat reprehenderit enim sunt laborum. Velit veniam in officia nulla adipisicing ut duis officia.</p>
+<p>Exercitation voluptate irure in irure tempor mollit Lorem nostrud ad officia. Velit id fugiat occaecat do tempor. Sit officia Lorem aliquip eu deserunt consectetur. Aute proident deserunt in nulla aliquip dolore ipsum Lorem ut cupidatat consectetur sit sint laborum. Esse cupidatat sit sint sunt tempor exercitation deserunt. Labore dolor duis laborum est do nisi ut veniam dolor et nostrud nostrud.</p>
+</p>
+</div>
+
+<script>
+  
+  document.addEventListener('click', function(event) {
+      
+      const isOutsideContainer = !event.target.closest('.photo-container');
+      if (isOutsideContainer) {
+          
+          window.parent.postMessage('iframeClick', '*');
+      }
+  });
+  
+      
+  document.addEventListener('keyup', function(event) {
+      if (event.key === 'Escape') {
+          window.parent.postMessage('iframeClick', '*');
+      }
+  });
+</script>
+</body>
+
+

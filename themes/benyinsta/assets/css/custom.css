@@ -1,0 +1,46 @@
+.fade-out {
+    animation: fadeOut 0.5s forwards;
+}
+.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Default styles */
+.publications-menu h6, .publications-menu i,
+.igtv h6, .igtv i {
+    opacity: 0.5; /* or any default value */
+}
+.igtv {
+    border-top: none; /* or any default value */
+}
+
+/* Active styles */
+.active {
+    border-top: 0.2px solid black;
+}
+.active h6, .active i {
+    opacity: 1;
+}
+
+/* Default styles for opacity and border */
+.default-styles {
+    opacity: 0; /* or any default value */
+    border-top: none; /* or any default value */
+}
+
+/* Active styles for publications-menu */
+.publications-menu.active {
+    border-top: 0.2px solid black;
+}
+.publications-menu.active h6,
+.publications-menu.active i {
+    opacity: 1;
+}

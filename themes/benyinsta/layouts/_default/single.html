@@ -1,0 +1,169 @@
+<!-- {{ define "main" }}
+  <h1>{{ .Title }}</h1>
+
+  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+  {{ $dateHuman := .Date | time.Format ":date_long" }}
+  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
+  {{ .Content }}
+  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+{{ end }} -->
+<style>
+    .photo-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .photo-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .photo-description {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .photo-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+        .photo-container {
+            padding: 10px;
+        }
+        .photo-title {
+            font-size: 20px;
+        }
+        .photo-description {
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="photo-container">
+  <h2 class="photo-title">{{ .Title }}</h2>
+  {{ with .Params.featured_image }}
+    <img class="photo-img" src="{{ . }}" alt="{{ . }}">
+  {{ end }}
+  <p class="photo-description">{{ .Content }}</p>
+</div>
+
+<script>
+  // JavaScript to send message to parent window when a click occurs
+  document.addEventListener('click', function(event) {
+      // Check if the click occurred outside of the photo-container element
+      const isOutsideContainer = !event.target.closest('.photo-container');
+      if (isOutsideContainer) {
+          // If the click occurred outside of the photo-container element, send a message to the parent window
+          window.parent.postMessage('iframeClick', '*');
+      }
+  });
+  
+      // Close the popup when the Escape key is pressed
+  document.addEventListener('keyup', function(event) {
+      if (event.key === 'Escape') {
+          window.parent.postMessage('iframeClick', '*');
+      }
+  });
+</script>
+</body>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo 1</title>
+<style>
+    /* Base styles 
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+    }
+*/
+    .photo-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    .photo-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .photo-description {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .photo-img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+        .photo-container {
+            padding: 10px;
+        }
+        .photo-title {
+            font-size: 20px;
+        }
+        .photo-description {
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="photo-container">
+    <h2 class="photo-title">Photo 1</h2>
+    <img class="photo-img" src="photo1.jpg" alt="Photo 1">
+    <p class="photo-description">This is the description of Photo 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae efficitur justo. Vestibulum consequat aliquet purus, non commodo nibh bibendum eget. Donec quis lacus et nulla tristique consequat. Fusce sit amet dapibus sapien. Duis varius lectus in felis eleifend bibendum.</p>
+</div>
+
+<script>
+    // JavaScript to send message to parent window when a click occurs
+    document.addEventListener('click', function(event) {
+        // Check if the click occurred outside of the photo-container element
+        const isOutsideContainer = !event.target.closest('.photo-container');
+        if (isOutsideContainer) {
+            // If the click occurred outside of the photo-container element, send a message to the parent window
+            window.parent.postMessage('iframeClick', '*');
+        }
+    });
+    
+        // Close the popup when the Escape key is pressed
+    document.addEventListener('keyup', function(event) {
+        if (event.key === 'Escape') {
+            window.parent.postMessage('iframeClick', '*');
+        }
+    });
+</script>
+
+</body>
+</html> -->

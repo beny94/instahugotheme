@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".igtv h6").click(function(){var t=$("#new-content-template").html(),e=$(".profile-publications");e.addClass("fade-out"),e.one("animationend",function(){e.removeClass("fade-out").html(t).addClass("fade-in"),e.one("animationend",function(){e.removeClass("fade-in")})})})})
